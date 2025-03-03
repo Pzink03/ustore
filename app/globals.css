@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-poppins: var(--font-poppins);
+  --color-primary: #fa7275;
+  --color-error: "b80000";
+  --color-green: "3DD9B3";
+  --color-blue: "#56B8FF";
+  --color-pink: "EEA8FD";
+  --color-orange: "#F9AB72";
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
