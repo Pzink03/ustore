@@ -6,7 +6,7 @@
 
 @theme {
   --font-poppins: var(--font-poppins);
-  --color-primary: #fa7275;
+  --color-mainColor: #fa7275;
   --color-error: "b80000";
   --color-green: "3DD9B3";
   --color-blue: "#56B8FF";
