@@ -17,8 +17,15 @@ import {
   InputOTPSlot,
 } from "./ui/input-otp"
 import Image from "next/image"
+import { Button } from "./ui/button"
 
-const OTPModal = () => {
+const OTPModal = ({
+  email,
+  accountId,
+}: {
+  accountId: string
+  email: string
+}) => {
   const [isOpen, setIsOpen] = useState(true)
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -53,25 +60,49 @@ const OTPModal = () => {
             />
           </AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone This will{" "}
+            We've sent a code to <span>{email}</span>
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <InputOTP maxLength={6}>
-          <InputOTPGroup>
-            <InputOTPSlot index={0} />
-            <InputOTPSlot index={1} />
-            <InputOTPSlot index={2} />
-          </InputOTPGroup>
-          <InputOTPSeparator />
-          <InputOTPGroup>
-            <InputOTPSlot index={3} />
-            <InputOTPSlot index={4} />
-            <InputOTPSlot index={5} />
+        <InputOTP maxLength={6} value={password} onChange={setPassword}>
+          <InputOTPGroup className="shad-otp">
+            <InputOTPSlot index={0} className="shad-otp-slot" />
+            <InputOTPSlot index={1} className="shad-otp-slot" />
+            <InputOTPSlot index={2} className="shad-otp-slot" />
+            <InputOTPSlot index={3} className="shad-otp-slot" />
+            <InputOTPSlot index={4} className="shad-otp-slot" />
+            <InputOTPSlot index={5} className="shad-otp-slot" />
           </InputOTPGroup>
         </InputOTP>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <div className="flex flex-col w-full gap-4">
+            <AlertDialogAction
+              onClick={handleSubmit}
+              type="button"
+              className="shad-submit-btn h-12"
+            >
+              Submit
+              {isLoading && (
+                <Image
+                  src="/assets/icons/loader.svg"
+                  alt="loader"
+                  width={24}
+                  height={24}
+                  className="ml-2 animate-spin"
+                />
+              )}
+            </AlertDialogAction>
+            <div className="subtitle-2 mt-2 text-center text-gray-500">
+              Didn't get a code?
+              <Button
+                className="pl-1 text-mainColor"
+                type="button"
+                variant="link"
+                onClick={handleResendOtp}
+              >
+                Click to resend
+              </Button>
+            </div>
+          </div>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

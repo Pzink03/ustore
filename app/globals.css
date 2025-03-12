@@ -52,6 +52,21 @@
   .overline {
     @apply text-[10px] leading-[14px] font-normal;
   }
+  .shad-no-focus {
+    @apply outline-none ring-offset-transparent focus:ring-transparent focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0;
+  }
+  .shad-input {
+    @apply border-none shadow-none p-0;
+  }
+  .shad-form-item {
+    @apply flex h-[78px] flex-col justify-center rounded-xl border border-gray-300 px-4;
+  }
+  .shad-form-label {
+    @apply pt-2 w-full;
+  }
+  .shad-form-message {
+    @apply text-red-500 ml-4;
+  }
 }
 
 :root {
