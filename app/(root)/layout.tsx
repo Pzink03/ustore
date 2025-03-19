@@ -1,3 +1,5 @@
+import Header from "@/components/Header"
+import MobileNavigation from "@/components/MobileNavigation"
 import React, { ReactNode } from "react"
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -5,6 +7,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <main className="flex h-screen">
       Sidebar
       <section className="flex h-full flex-1 flex-col">
+        <MobileNavigation /> <Header />
         <div className="main-content">{children}</div>
       </section>
     </main>
