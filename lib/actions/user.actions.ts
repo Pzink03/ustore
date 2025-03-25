@@ -5,6 +5,7 @@ import { createAdminClient } from "../appwrite"
 import { appwriteConfig } from "../appwrite/config"
 import { parseStringify } from "../utils"
 import { cookies } from "next/headers"
+import { avatarPlaceholderUrl } from "@/constants"
 
 const getUserByEmail = async (email: string) => {
   const { databases } = await createAdminClient()
@@ -55,7 +56,7 @@ export const createAccount = async ({
       {
         fullName,
         email,
-        avatar: "",
+        avatar: avatarPlaceholderUrl,
         accountId,
       }
     )

@@ -1,6 +1,6 @@
 "use client"
 
-import { navItems } from "@/constants"
+import { avatarPlaceholderUrl, navItems } from "@/constants"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
@@ -48,12 +48,28 @@ const Sidebar = () => {
                     pathname === url && "nav-icon-active"
                   )}
                 />
-                <p>{name}</p>
+                <p className="hidden lg:block">{name}</p>
               </li>
             </Link>
           ))}
         </ul>
       </nav>
+      <Image
+        src="/assets/images/files-2.png"
+        alt="logo"
+        width={506}
+        height={418}
+        className="w-full"
+      />
+      <div className="sidebar-user-info">
+        <Image
+          src={avatarPlaceholderUrl}
+          alt="Avatar"
+          width={44}
+          height={44}
+          className="sidebar-user-avatar"
+        />
+      </div>
     </aside>
   )
 }
