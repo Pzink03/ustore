@@ -101,6 +101,28 @@
   .shad-active {
     @apply bg-mainColor text-white;
   }
+  /* Mobile Navigation */
+  .mobile-header {
+    @apply flex h-[60px] justify-between px-5 sm:hidden;
+  }
+  .header-user {
+    @apply my-3 flex items-center gap-2 rounded-full p-1 text-gray-400 sm:justify-center sm:bg-mainColor/10 lg:justify-start lg:p-3;
+  }
+  .header-user-avatar {
+    @apply aspect-square w-10 rounded-full object-cover;
+  }
+  .mobile-nav {
+    @apply flex-1 gap-1 text-mainColor;
+  }
+  .mobile-nav-list {
+    @apply flex flex-1 flex-col gap-4;
+  }
+  .mobile-nav-item {
+    @apply flex text-gray-400 gap-4 w-full justify-start items-center px-6 h-[52px] rounded-full;
+  }
+  .mobile-sign-out-button {
+    @apply flex h-[52px] w-full items-center gap-4 rounded-full bg-mainColor/10 px-6 text-mainColor shadow-none transition-all hover:bg-mainColor/20;
+  }
 }
 
 :root {

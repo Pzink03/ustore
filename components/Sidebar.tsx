@@ -1,17 +1,12 @@
 "use client"
 
 import { avatarPlaceholderUrl, navItems } from "@/constants"
+import { currentUserProps } from "@/constants/types"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React from "react"
-
-type currentUserProps = {
-  fullName: string
-  avatar: string
-  email: string
-}
 
 const Sidebar = ({ fullName, avatar, email }: currentUserProps) => {
   const pathname = usePathname()
