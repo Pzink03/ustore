@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sheet"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { currentUserProps } from "@/constants/types"
+
 import { Separator } from "./ui/separator"
 import { navItems } from "@/constants"
 import Link from "next/link"
@@ -24,9 +24,9 @@ const MobileNavigation = ({
   fullName,
   avatar,
   email,
-  ownerId,
+  $id: ownerId,
   accountId,
-}: currentUserProps) => {
+}: CurrentUserProps) => {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
@@ -92,7 +92,7 @@ const MobileNavigation = ({
             </ul>
             <Separator className="my-4 bg-gray-300/20" />
             <div className="flex flex-col justify-between gap-5 pb-5">
-              <FileUploader />
+              <FileUploader ownerId={ownerId} accountId={accountId} />
               <Button
                 type="submit"
                 className="mobile-sign-out-button"
