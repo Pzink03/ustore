@@ -7,7 +7,7 @@ const FormattedDateTime = ({
   date: string
   className?: string
 }) => {
-  return <div>FormattedDateTime</div>
+  return <p></p>
 }
 
 export default FormattedDateTime

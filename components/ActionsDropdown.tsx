@@ -25,13 +25,17 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "./ui/input"
 import { Button } from "./ui/button"
+import { usePathname } from "next/navigation"
+import { renameFile } from "@/lib/actions/file.actions"
 
 const ActionsDropdown = ({ file }: { file: Models.Document }) => {
   const [action, setAction] = useState<ActionType | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const [fileName, setFileName] = useState(file.name)
+  const [name, setFileName] = useState(file.name)
   const [isLoading, setIsLoading] = useState(false)
+
+  const path = usePathname()
 
   const closeAllModals = () => {
     setIsDropdownOpen(false)
@@ -40,7 +44,29 @@ const ActionsDropdown = ({ file }: { file: Models.Document }) => {
     setFileName(file.name)
   }
 
-  const handleAction = async () => {}
+  const handleAction = async () => {
+    if (!action) return
+
+    setIsLoading(true)
+
+    let success = false
+
+    const actions = {
+      rename: () =>
+        renameFile({
+          fileId: file.$id,
+          name,
+          extension: file.extension,
+          path,
+        }),
+      share: () => console.log("share"),
+      delete: () => console.log("delete"),
+    }
+
+    success = await actions[action.value as keyof typeof actions]()
+
+    if (success) closeAllModals()
+  }
 
   const renderDialogContent = () => {
     if (!action) return
@@ -55,7 +81,7 @@ const ActionsDropdown = ({ file }: { file: Models.Document }) => {
           {value === "rename" && (
             <Input
               type="text"
-              value={fileName}
+              value={name}
               onChange={(e) => setFileName(e.target.value)}
             />
           )}
